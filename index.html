@@ -14,9 +14,11 @@
             background-image: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(3px);
-            /* 为了让内容在背景图上清晰显示，这里设置了一个透明度较低的黑色覆盖层 */
-            background-color:rgba(0, 0, 0, 0.5);
+            -webkit-filter: blur(8px);
+            -moz-filter: blur(8px);
+            -ms-filter: blur(8px);
+            filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.5);
             background-blend-mode: overlay;
             color: white;
         }
@@ -29,24 +31,32 @@
 
         /* 标题样式 */
         h1 {
-            color: #ffb6c1; /* 类似二次元风格的粉色 */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #ff00ff; /* 更鲜明的粉色 */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
             margin-bottom: 2rem;
+            font-size: 3em; /* 增大标题字体大小 */
         }
 
         /* 个人介绍部分样式 */
-      .personal-intro {
-            margin-bottom: 3rem;
-        }
-
-        /* 常玩游戏部分样式 */
-      .games-played {
-            margin-bottom: 3rem;
-        }
-
-        /* 编程语言部分样式 */
+      .personal-intro,
+      .games-played,
       .languages-known {
             margin-bottom: 3rem;
+        }
+
+        /* 卡片整体样式 */
+      .card {
+            background-color: rgba(0, 0, 0, 0.6); /* 调整卡片背景透明度 */
+            color: #e0e0e0; /* 正文使用更柔和但对比度较高的白色 */
+            padding: 20px;
+            border-radius: 15px; /* 增加卡片的圆角 */
+        }
+
+        /* 特定子元素样式 */
+      .card h2 {
+            color: #ff9900; /* 卡片标题使用橙色 */
+            margin-bottom: 15px;
+            font-size: 2em; /* 增大卡片标题字体大小 */
         }
 
         /* 底部版权提示样式 */
@@ -56,62 +66,56 @@
             padding-top: 1rem;
             color: #ccc;
         }
-
-        /* 为了让内容块有一定的透明度和更好的显示效果 */
-      .card {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-        }
     </style>
 </head>
 
 <body>
-<div class="container">
-    <div class="text-center">
-        <h1>欢迎来到我的二次元世界</h1>
-    </div>
-    <!-- 个人介绍部分 -->
-    <div class="personal-intro">
-        <div class="card mx-auto" style="max-width: 500px;">
-            <div class="card-body">
-                <h2>个人介绍</h2>
-                <p>我是一名狂热的二次元爱好者，尤其痴迷于 <a href="#">崩坏星穹铁道</a> 这类充满奇幻冒险与精美人设的游戏。在现实生活中，我不断探索技术与兴趣的融合点，希望能在这里分享我的故事与见解。</p>
+    <div class="container">
+        <div class="text-center">
+            <h1>欢迎来到我的二次元世界</h1>
+        </div>
+        <!-- 个人介绍部分 -->
+        <div class="personal-intro">
+            <div class="card mx-auto" style="max-width: 500px;">
+                <div class="card-body">
+                    <h2>个人介绍</h2>
+                    <p>我是一名狂热的二次元爱好者，尤其痴迷于 <a href="#">崩坏星穹铁道</a> 这类充满奇幻冒险与精美人设的游戏。在现实生活中，我不断探索技术与兴趣的融合点，希望能在这里分享我的故事与见解。</p>
+                </div>
+            </div>
+        </div>
+        <!-- 常玩游戏部分 -->
+        <div class="games-played">
+            <div class="card mx-auto" style="max-width: 500px;">
+                <div class="card-body">
+                    <h2>常玩游戏</h2>
+                    <ul>
+                        <li>崩坏星穹铁道</li>
+                        <li>原神</li>
+                        <li>明日方舟</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 掌握的编程语言部分 -->
+        <div class="languages-known">
+            <div class="card mx-auto" style="max-width: 500px;">
+                <div class="card-body">
+                    <h2>掌握的编程语言</h2>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>C++</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <!-- 常玩游戏部分 -->
-    <div class="games-played">
-        <div class="card mx-auto" style="max-width: 500px;">
-            <div class="card-body">
-                <h2>常玩游戏</h2>
-                <ul>
-                    <li>崩坏星穹铁道</li>
-                    <li>原神</li>
-                    <li>明日方舟</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- 掌握的编程语言部分 -->
-    <div class="languages-known">
-        <div class="card mx-auto" style="max-width: 500px;">
-            <div class="card-body">
-                <h2>掌握的编程语言</h2>
-                <ul>
-                    <li>Python</li>
-                    <li>Java</li>
-                    <li>C++</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<footer>
-    <p>&copy; 2025 个人版权所有</p>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
+    <footer>
+        <p>&copy; 2025 个人版权所有</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
