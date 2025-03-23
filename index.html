@@ -11,16 +11,24 @@
     <style>
         /* 设置背景图并模糊处理 */
         body {
+            position: relative;
+            color: white;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg');
             background-size: cover;
             background-position: center;
-            -webkit-filter: blur(8px);
-            -moz-filter: blur(8px);
-            -ms-filter: blur(8px);
             filter: blur(8px);
+            z-index: -1;
             background-color: rgba(0, 0, 0, 0.5);
             background-blend-mode: overlay;
-            color: white;
         }
 
         /* 整体容器样式 */
@@ -31,32 +39,24 @@
 
         /* 标题样式 */
         h1 {
-            color: #ff00ff; /* 更鲜明的粉色 */
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            color: #ffb6c1;  /* 类似二次元风格的粉色 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin-bottom: 2rem;
-            font-size: 3em; /* 增大标题字体大小 */
         }
 
         /* 个人介绍部分样式 */
-      .personal-intro,
-      .games-played,
-      .languages-known {
+      .personal-intro {
             margin-bottom: 3rem;
         }
 
-        /* 卡片整体样式 */
-      .card {
-            background-color: rgba(0, 0, 0, 0.6); /* 调整卡片背景透明度 */
-            color: #e0e0e0; /* 正文使用更柔和但对比度较高的白色 */
-            padding: 20px;
-            border-radius: 15px; /* 增加卡片的圆角 */
+        /* 常玩游戏部分样式 */
+      .games-played {
+            margin-bottom: 3rem;
         }
 
-        /* 特定子元素样式 */
-      .card h2 {
-            color: #ff9900; /* 卡片标题使用橙色 */
-            margin-bottom: 15px;
-            font-size: 2em; /* 增大卡片标题字体大小 */
+        /* 编程语言部分样式 */
+      .languages-known {
+            margin-bottom: 3rem;
         }
 
         /* 底部版权提示样式 */
@@ -65,6 +65,12 @@
             border-top: 1px solid rgba(255, 255, 255, 0.3);
             padding-top: 1rem;
             color: #ccc;
+        }
+
+        /* 为了让内容块有一定的透明度和更好的显示效果 */
+      .card {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
         }
     </style>
 </head>
