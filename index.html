@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>二次元个人网站</title>
     <style>
-        /* 整体页面设置 */
+        /* 整体页面布局 */
         body {
-            font-family: 'Comic Sans MS', cursive;
+            font-family: 'Dancing Script', cursive;
             margin: 0;
             padding: 0;
-            background-color: #F0E6FF; /* 淡紫色背景打底 */
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             min-height: 100vh;
+            background-color: #F5E1FE;
         }
 
-        /* 背景图片设置 */
+        /* 背景图片 */
         body::before {
             content: "";
             position: absolute;
@@ -28,30 +29,30 @@
             background-image: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(2px); /* 背景模糊度 */
+            filter: blur(2px);
             z-index: -1;
-            opacity: 0.8; /* 背景图透明度 */
+            opacity: 0.7;
+            background-blend-mode: multiply;
         }
 
         /* 导航栏 */
-      .nav {
-            background-color: #FFB6C1; /* 浅粉色背景 */
-            color: white;
-            padding: 15px;
+      .navbar {
+            background-color: #FFB3E3;
+            padding: 15px 0;
             text-align: center;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* 阴影 */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         }
 
-      .nav a {
-            color: white;
+      .navbar a {
+            color: #803E75;
+            font-size: 1.3em;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
+            margin: 0 20px;
+            transition: color 0.3s ease - in - out;
         }
 
-      .nav a:hover {
-            color: #FF1493; /* 悬停时变成亮粉色 */
+      .navbar a:hover {
+            color: #FF69B4;
         }
 
         /* 主内容区域 */
@@ -64,114 +65,159 @@
             padding: 40px;
         }
 
-        /* 自我介绍部分 */
-      .intro {
-            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色卡片 */
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* 阴影 */
+        /* 自我介绍卡片 */
+      .intro-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             text-align: center;
             width: 80%;
         }
 
         /* 头像 */
       .avatar {
-            width: 150px;
-            height: 150px;
-            border: 5px solid #FF1493; /* 亮粉色边框 */
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
+            border: 8px solid #FF1493;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
         }
 
         /* 标题 */
-      .title {
+      .intro-title {
             color: #FF3399;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2.8em;
+            margin-bottom: 15px;
         }
 
-        /* 普通文本 */
-      .text {
-            color: #666;
-            font-size: 1.2em;
+        /* 段落文本 */
+      .intro-text {
+            color: #555;
+            font-size: 1.3em;
+            line-height: 1.6;
         }
 
         /* 按钮 */
-      .btn {
-            background-color: #FFE4E1; /* 淡粉色背景 */
-            color: #800080; /* 深粉色文本 */
-            border-radius: 30px;
-            padding: 12px 25px;
-            font-size: 1em;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* 阴影 */
+      .action-button {
+            background-color: #FFE4E1;
+            color: #9932CC;
+            border-radius: 35px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease;
         }
 
-      .btn:hover {
-            background-color: #FFBCD9; /* 悬停时颜色变化 */
+      .action-button:hover {
+            background-color: #FFBCD9;
         }
 
-        /* 社交链接部分 */
+        /* 技能展示 */
+      .skill-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+      .skill-title {
+            color: #FF3399;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+      .skill-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+      .skill-list li {
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 12px 20px;
+            margin: 10px auto;
+            width: fit - content;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        /* 社交链接 */
       .social-links {
-            margin-top: 30px;
+            margin-top: 50px;
+            text-align: center;
         }
 
-      .social-links a {
-            margin: 0 10px;
+      .social-link {
+            display: inline - block;
+            margin: 0 15px;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
         }
 
-      .social-icon {
-            width: 40px;
-            height: 40px;
-            display: inline-block;
+      .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
-        /* 版权部分 */
-      .copyright {
-            background-color: #FFB6C1;
+      .social-link img {
+            width: 30px;
+            height: 30px;
+            margin-top: 15px;
+        }
+
+        /* 页脚 */
+      .footer {
+            background-color: #FFB3E3;
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 15px 0;
         }
     </style>
 </head>
 
 <body>
     <!-- 导航栏 -->
-    <div class="nav">
+    <div class="navbar">
         <a href="#">首页</a>
         <a href="#">关于我</a>
-        <a href="#">作品展示</a>
-        <a href="#">联系方式</a>
+        <a href="#">我的作品</a>
+        <a href="#">联系我</a>
     </div>
 
     <!-- 主内容区域 -->
     <div class="main-content">
         <!-- 自我介绍 -->
-        <div class="intro">
-            <img class="avatar" src="你的头像链接" alt="Avatar">
-            <h1 class="title">欢迎来到我的世界</h1>
-            <p class="text">嗨，这里是[你的名字]的个人网站！我喜欢二次元，也喜欢分享自己的生活点滴。</p>
-            <a href="#" class="btn">了解更多</a>
+        <div class="intro-card">
+            <img class="avatar" src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg?ts=1707708991" alt="Avatar">
+            <h1 class="intro-title">欢迎来到我的世界</h1>
+            <p class="intro-text">嘿，我是水稻，很高兴你来到我的个人网站。我喜欢探索各种有趣的事物，也热衷于分享自己的想法哦！</p>
+            <a href="#" class="action-button">了解更多</a>
+        </div>
+
+        <!-- 技能展示 -->
+        <div class="skill-section">
+            <h2 class="skill-title">我会的技能</h2>
+            <ul class="skill-list">
+                <li><i class="fa fa-check-square-o"></i>玩游戏 <span class="badge bg - warning text - dark">HOT</span></li>
+                <li><i class="fa fa-check-square-o"></i>写网站 <span class="badge bg - warning text - dark">HOT</span></li>
+                <li><i class="fa fa-check-square-o"></i>管理论坛 <span class="badge bg - warning text - dark">HOT</span></li>
+                <li><i class="fa fa-check-square-o"></i>水群</li>
+            </ul>
         </div>
 
         <!-- 社交链接 -->
         <div class="social-links">
-            <a href="#">
-                <img class="social-icon" src="github图标链接" alt="GitHub">
-            </a>
-            <a href="#">
-                <img class="social-icon" src="b站图标链接" alt="b站">
-            </a>
-            <a href="#">
-                <img class="social-icon" src="微博图标链接" alt="微博">
-            </a>
+            <a href="https://klpbbs.com/?14351" class="social-link"><img src="苦力怕论坛图标链接.png" alt="苦力怕论坛"></a>
+            <a href="https://github.com/shuidaobenzun" class="social-link"><img src="github图标链接.png" alt="GitHub"></a>
+            <a href="https://b23.tv/wa7aGWI" class="social-link"><img src="b站图标链接.png" alt="B站"></a>
         </div>
     </div>
 
-    <!-- 版权部分 -->
-    <div class="copyright">
-        &copy; 2025二次元风格个人网站版权所有
+    <!-- 页脚 -->
+    <div class="footer">
+        &copy; 2024 水稻本尊
     </div>
 </body>
 
