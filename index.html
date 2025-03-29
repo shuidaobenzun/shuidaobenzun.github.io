@@ -3,23 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>水稻的个人网站</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二次元个人网站</title>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Pacifico');
-
+        /* 整体页面设置 */
         body {
-            font-family: 'Pacifico', cursive;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-            background-color: #F9F0F5;
-            padding-top: 90px;  /* 为导航栏留出空间 */
+            font-family: 'Comic Sans MS', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #F0E6FF; /* 淡紫色背景打底 */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* 背景图片设置 */
         body::before {
             content: "";
             position: absolute;
@@ -30,243 +28,151 @@
             background-image: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(3px);  /* 降低背景模糊度 */
+            filter: blur(2px); /* 背景模糊度 */
             z-index: -1;
-            background-color: rgba(0, 0, 0, 0.4);
-            background-blend-mode: overlay;
+            opacity: 0.8; /* 背景图透明度 */
         }
 
-        /* 导航栏样式 */
-      .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #FF99CC;  /* 调整导航栏颜色 */
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            padding: 10px 0;
+        /* 导航栏 */
+      .nav {
+            background-color: #FFB6C1; /* 浅粉色背景 */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* 阴影 */
+        }
+
+      .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+      .nav a:hover {
+            color: #FF1493; /* 悬停时变成亮粉色 */
+        }
+
+        /* 主内容区域 */
+      .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        /* 自我介绍部分 */
+      .intro {
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色卡片 */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* 阴影 */
+            text-align: center;
+            width: 80%;
+        }
+
+        /* 头像 */
+      .avatar {
+            width: 150px;
+            height: 150px;
+            border: 5px solid #FF1493; /* 亮粉色边框 */
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* 标题 */
+      .title {
+            color: #FF3399;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        /* 普通文本 */
+      .text {
+            color: #666;
             font-size: 1.2em;
         }
 
-      .navbar-brand {
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-            font-size: 2em;
-            margin-left: 20px;
-        }
-
-      .nav-link {
-            color: white;
-            border-radius: 15px;
-            padding: 8px 15px;
-            transition: all 0.3s ease;
-        }
-
-      .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #FF3399;  /* 改变悬停时字体颜色 */
-        }
-
-        /* 头像展示 */
-      .avatar {
-            display: block;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-            margin: 0 auto 30px;  /* 头像居中 */
-        }
-
-        /* 按钮样式 */
+        /* 按钮 */
       .btn {
-            background-color: #FFDDEE;  /* 按钮背景色 */
-            color: #800080;
+            background-color: #FFE4E1; /* 淡粉色背景 */
+            color: #800080; /* 深粉色文本 */
             border-radius: 30px;
             padding: 12px 25px;
-            font-size: 1.1em;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            font-size: 1em;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* 阴影 */
             transition: background-color 0.3s ease;
         }
 
       .btn:hover {
-            background-color: #FFAACC;
-            color: white;
+            background-color: #FFBCD9; /* 悬停时颜色变化 */
         }
 
-        /* 其他网站按钮居中 */
-      .btn-group {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
+        /* 社交链接部分 */
+      .social-links {
+            margin-top: 30px;
         }
 
-        /* 技能和游戏展示 */
-      .section-title {
-            text-align: center;
-            color: #FF3399;
-            font-size: 1.8em;
-            margin-top: 50px;
+      .social-links a {
+            margin: 0 10px;
         }
 
-      .skill - list,
-      .game - list {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
+      .social-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
         }
 
-      .skill - list li,
-      .game - list li {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 18px;
-            padding: 10px 20px;
-            margin: 10px auto;
-            width: fit-content;
-        }
-
-        /* 进度条样式 */
-      .progress-bar {
-            background-color: #FF99CC;
-        }
-
-        /* 版权提示样式 */
+        /* 版权部分 */
       .copyright {
-            text-align: center;
+            background-color: #FFB6C1;
             color: white;
-            margin-top: 40px;
+            text-align: center;
+            padding: 10px;
         }
     </style>
 </head>
 
 <body>
-
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">水稻的个人网站</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="index.html">简体中文</a></li>
-                            <li><a class="dropdown-item" href="english.html">English</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-ellipsis-h"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <li><a class="dropdown-item">我也不知道</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-
-        <!-- 头像及主要按钮区域 -->
-        <div class="text-center">
-            <img class="avatar" src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg?ts=1707708991"
-                 alt="Avatar">
-            <h3 class="mt - 3">欢迎来到水稻的个人网站</h3>
-            <a href="https://blog.oneshuidao.top" class="btn btn - primary mt - 3">水稻的个人博客</a>
-            <div class="btn - group">
-                <button type="button" class="btn btn - secondary dropdown - toggle" data-bs-toggle="dropdown">
-                    其他网站
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="https://klpbbs.com/?14351">苦力怕论坛个人主页</a></li>
-                    <li><a class="dropdown-item" href="https://github.com/shuidaobenzun">GitHub</a></li>
-                    <li><a class="dropdown-item" href="https://b23.tv/wa7aGWI">Bilibili</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- 技能展示 -->
-        <h2 class="section - title">我会的技能</h2>
-        <ul class="skill - list">
-            <li><i class="fa fa-check-square-o"></i>玩游戏 <span class="badge bg - warning text - dark">HOT</span></li>
-            <li><i class="fa fa-check-square-o"></i>写网站 <span class="badge bg - warning text - dark">HOT</span></li>
-            <li><i class="fa fa-check-square-o"></i>管理论坛 <span class="badge bg - warning text - dark">HOT</span></li>
-            <li><i class="fa fa-check-square-o"></i>水群</li>
-        </ul>
-        <p class="text-center"><b>所占比例</b></p>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10"
-                 aria-valuemin="0" aria-valuemax="100">社交 10%</div>
-        </div>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30"
-                 aria-valuemin="0" aria-valuemax="100">编程 30%</div>
-        </div>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70"
-                 aria-valuemin="0" aria-valuemax="100">玩游戏 70%</div>
-        </div>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100"
-                 aria-valuemin="0" aria-valuemax="100">摆烂 100%</div>
-        </div>
-
-        <!-- 游戏展示 -->
-        <h2 class="section - title">我玩的游戏</h2>
-        <ul class="game - list">
-            <li><strong>微软</strong>
-                <ul>
-                    <li>Minecraft</li>
-                    <li>地平线 4</li>
-                </ul>
-            </li>
-            <li><strong>Steam</strong>
-                <ul>
-                    <li>求生之路系列</li>
-                    <li>传送门系列</li>
-                    <li>战地 1</li>
-                    <li>……</li>
-                </ul>
-            </li>
-            <li><strong>米哈游</strong>
-                <ul>
-                    <li>崩坏三</li>
-                    <li>原神</li>
-                    <li>崩坏：星穹铁道</li>
-                    <li>绝区零(未上线)</li>
-                </ul>
-            </li>
-        </ul>
-
-        <!-- Email展示 -->
-        <h2 class="section - title">Email</h2>
-        <div class="text-center">
-            <a href="mailto:5********@******">5********@******</a><br>
-            <a href="mailto:s******@**************">s******@**************</a><br>
-            <a href="mailto:o*********@*******">o*********@*******</a>
-        </div>
-
+    <div class="nav">
+        <a href="#">首页</a>
+        <a href="#">关于我</a>
+        <a href="#">作品展示</a>
+        <a href="#">联系方式</a>
     </div>
 
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <!-- 自我介绍 -->
+        <div class="intro">
+            <img class="avatar" src="你的头像链接" alt="Avatar">
+            <h1 class="title">欢迎来到我的世界</h1>
+            <p class="text">嗨，这里是[你的名字]的个人网站！我喜欢二次元，也喜欢分享自己的生活点滴。</p>
+            <a href="#" class="btn">了解更多</a>
+        </div>
+
+        <!-- 社交链接 -->
+        <div class="social-links">
+            <a href="#">
+                <img class="social-icon" src="github图标链接" alt="GitHub">
+            </a>
+            <a href="#">
+                <img class="social-icon" src="b站图标链接" alt="b站">
+            </a>
+            <a href="#">
+                <img class="social-icon" src="微博图标链接" alt="微博">
+            </a>
+        </div>
+    </div>
+
+    <!-- 版权部分 -->
     <div class="copyright">
-        <i class="fa fa - copyright"></i>2024 水稻本尊 使用外部框架 Bootstrap 5
+        &copy; 2025二次元风格个人网站版权所有
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-            crossorigin="anonymous"></script>
 </body>
 
 </html>
