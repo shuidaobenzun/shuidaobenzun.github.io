@@ -1,183 +1,168 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二次元风格个人网站</title>
+    <title>小樱的二次元小屋</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* 全局设置 */
-        body {
-            font-family: 'Kurale', serif;
+        * {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #FFE4FF, #E1EFFF);
-            position: relative;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', '幼圆', cursive;
         }
 
-        /* 背景图像 */
         body::before {
-            content: "";
-            position: absolute;
+            content: '';
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg');
-            background-size: cover;
-            background-position: center;
-            filter: blur(3px);
+            background: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg') no-repeat center/cover;
+            filter: blur(8px) brightness(0.9);
             z-index: -1;
-            opacity: 0.6;
         }
 
-        /* 标题 */
-      .title {
-            text-align: center;
-            color: #FF3399;
-            font-size: 3em;
-            margin-top: 50px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* 个人信息展示区 */
-      .info-section {
-            background-color: rgba(255, 255, 255, 0.8);
+        /* 导航栏 */
+        .nav {
+            background: rgba(255, 223, 240, 0.9);
             border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            width: 80%;
-            max-width: 600px;
-            margin: 50px auto 0;
-            padding: 30px;
-            text-align: center;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
         }
 
-        /* 头像 */
-      .avatar {
-            width: 200px;
-            height: 200px;
+        .nav a {
+            color: #ff7096;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: #ff1493;
+            text-shadow: 0 0 10px #ff69b4;
+        }
+
+        /* 主要内容区域 */
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 头像样式 */
+        .avatar {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 10px solid #FF1493;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            margin: -100px auto 20px;
+            position: relative;
+            background: url('你的头像地址') center/cover;
         }
 
-        /* 个人简介 */
-      .bio {
-            font-size: 1.2em;
-            color: #555;
-            margin-top: 20px;
-        }
-
-        /* 社交链接区域 */
-      .social-section {
-            margin-top: 40px;
+        /* 标题样式 */
+        h1 {
+            color: #ff69b4;
             text-align: center;
-        }
-
-        /* 社交链接按钮 */
-      .social-btn {
-            display: inline-block;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.6);
-            margin: 0 15px;
-            transition: background-color 0.3s ease;
-        }
-
-      .social-btn:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* 社交图标 */
-      .social-icon {
-            width: 35px;
-            height: 35px;
-            margin-top: 17.5px;
-        }
-
-        /* 技能展示区域 */
-      .skill-section {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            width: 80%;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 30px;
-            text-align: center;
-        }
-
-        /* 技能标题 */
-      .skill-title {
-            text-align: center;
-            color: #FF3399;
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 0px white;
         }
 
-        /* 技能列表 */
-      .skill-list {
-            list-style-type: none;
-            padding: 0;
+        /* 内容卡片 */
+        .card {
+            background: linear-gradient(145deg, #fff0f5, #ffe4e1);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
         }
 
-      .skill-list li {
-            font-size: 1.2em;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 10px 15px;
-            margin-bottom: 15px;
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 20px;
+            background: rgba(255, 182, 193, 0.3);
+            border-radius: 10px;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white!important;
+            padding: 12px 30px;
+            border-radius: 25px;
             display: inline-block;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        /* 版权信息 */
-      .copyright {
-            text-align: center;
-            color: #888;
-            margin-top: 50px;
-            font-size: 1em;
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        /* 图标装饰 */
+        .decor-star {
+            position: absolute;
+            color: #ff69b4;
+            animation: twinkle 1.5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
     </style>
 </head>
-
 <body>
-    <!-- 标题 -->
-    <h1 class="title">欢迎来到我的世界</h1>
+    <div class="container">
+        <nav class="nav">
+            <a href="#"><i class="fas fa-home"></i> 首页</a>
+            <a href="#"><i class="fas fa-heart"></i> 作品</a>
+            <a href="#"><i class="fas fa-envelope"></i> 联系</a>
+        </nav>
 
-    <!-- 个人信息展示 -->
-    <div class="info-section">
-        <img class="avatar" src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg?ts=1707708991" alt="Avatar">
-        <p class="bio">嗨，我是水稻，欢迎来到我的二次元小天地！这里有我的各种小秘密和生活趣事~</p>
+        <div class="main-card">
+            <div class="avatar"></div>
+            <h1>欢迎来到小樱的次元小屋 ✨</h1>
+            
+            <div class="card">
+                <h2><i class="fas fa-star"></i> 关于我</h2>
+                <p>❤️ 二次元文化爱好者</p>
+                <p>🎨 插画创作者</p>
+                <p>🌸 可爱事物收集家</p>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-paint-brush"></i> 最新作品</h2>
+                <!-- 这里可以添加作品内容 -->
+            </div>
+
+            <div style="text-align: center">
+                <button class="btn"><i class="fas fa-comment"></i> 留言板</button>
+                <button class="btn"><i class="fas fa-share-alt"></i> 社交链接</button>
+            </div>
+        </div>
     </div>
-
-    <!-- 社交链接 -->
-    <div class="social-section">
-        <a href="https://klpbbs.com/?14351" class="social-btn">
-            <img class="social-icon" src="苦力怕论坛图标.png" alt="苦力怕论坛图标">
-        </a>
-        <a href="https://github.com/shuidaobenzun" class="social-btn">
-            <img class="social-icon" src="github图标.png" alt="GitHub图标">
-        </a>
-        <a href="https://b23.tv/wa7aGWI" class="social-btn">
-            <img class="social-icon" src="b站图标.png" alt="B站图标">
-        </a>
-    </div>
-
-    <!-- 技能展示 -->
-    <div class="skill-section">
-        <h3 class="skill-title">我会的技能</h3>
-        <ul class="skill-list">
-            <li>玩游戏</li>
-            <li>写网站</li>
-            <li>管理论坛</li>
-            <li>水群</li>
-        </ul>
-    </div>
-
-    <!-- 版权信息 -->
-    <p class="copyright">&copy; 2024 水稻本尊</p>
 </body>
-
 </html>
