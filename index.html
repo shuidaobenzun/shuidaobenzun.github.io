@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <title>稻田</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/mdui@2.0.3/mdui.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
         * {
             margin: 0;
@@ -27,156 +26,73 @@
             z-index: -1;
         }
 
-        /* 白天模式样式 */
-      .day-mode {
-            body {
-                background-color: #F9F9F9;
-                color: #333;
-            }
-
-          .nav {
-                background: rgba(255, 240, 245, 0.95);
-                box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
-            }
-
-          .nav-title {
-                color: #ff69b4;
-            }
-
-          .lang-item,
-          .lang-btn {
-                color: #ff69b4;
-            }
-
-          .moe-card {
-                background: rgba(255, 255, 255, 0.95);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            }
-
-          .moe-card::before {
-                background: rgba(255, 182, 193, 0.3);
-            }
-
-          .moe-progress {
-                background: #ffe5f0;
-            }
-
-          .moe-progress-bar {
-                background: linear-gradient(45deg, #ff69b4, #ff1493);
-            }
-
-          .contact-btn {
-                background: rgba(255, 105, 180, 0.9);
-                color: white;
-            }
-        }
-
-        /* 黑夜模式样式 */
-      .night-mode {
-            body {
-                background-color: #111;
-                color: #ccc;
-            }
-
-          .nav {
-                background: rgba(0, 0, 0, 0.9);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            }
-
-          .nav-title {
-                color: #ff69b4;
-            }
-
-          .lang-item,
-          .lang-btn {
-                color: white;
-            }
-
-          .moe-card {
-                background: rgba(0, 0, 0, 0.9);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            }
-
-          .moe-card::before {
-                background: rgba(80, 80, 80, 0.3);
-            }
-
-          .moe-progress {
-                background: #333;
-            }
-
-          .moe-progress-bar {
-                background: linear-gradient(45deg, #ff69b4, #ff1493);
-            }
-
-          .contact-btn {
-                background: rgba(51, 51, 51, 0.9);
-                color: white;
-            }
-        }
-
-      .container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
         /* 导航栏样式 */
-      .nav {
+        .nav {
+            background: rgba(255, 240, 245, 0.95);
             border-radius: 20px;
             padding: 12px 20px;
             margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-      .nav-title {
+        .nav-title {
+            color: #ff69b4;
             font-size: 24px;
             text-shadow: 2px 2px 0px white;
             margin-left: 10px;
         }
 
         /* 语言切换优化样式 */
-      .lang-switcher {
+        .lang-switcher {
             margin-left: auto;
             position: relative;
         }
 
-      .lang-btn {
-            background: rgba(255, 105, 180, 0.1)!important;
+        .lang-btn {
+            background: rgba(255,105,180,0.1)!important;
+            color: #ff69b4!important;
             border-radius: 20px!important;
             padding: 8px 20px!important;
             transition: all 0.3s!important;
         }
 
-      .lang-btn:hover {
-            background: rgba(255, 105, 180, 0.2)!important;
+        .lang-btn:hover {
+            background: rgba(255,105,180,0.2)!important;
             transform: translateY(-2px);
         }
 
-      .lang-menu {
-            background: rgba(255, 255, 255, 0.95)!important;
+        .lang-menu {
+            background: rgba(255,255,255,0.95)!important;
             border-radius: 15px!important;
-            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3)!important;
+            box-shadow: 0 4px 20px rgba(255,182,193,0.3)!important;
         }
 
-      .lang-item {
+        .lang-item {
+            color: #ff69b4!important;
             padding: 12px 25px!important;
             transition: 0.3s!important;
         }
 
-      .lang-item:hover {
-            background: rgba(255, 105, 180, 0.1)!important;
+        .lang-item:hover {
+            background: rgba(255,105,180,0.1)!important;
         }
 
         /* 头像区域 */
-      .avatar-section {
+        .avatar-section {
             text-align: center;
             margin: 40px 0;
         }
 
-      .avatar {
+        .avatar {
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -186,15 +102,17 @@
         }
 
         /* 萌系卡片 */
-      .moe-card {
+        .moe-card {
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
             padding: 30px;
             margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             position: relative;
             transition: transform 0.3s;
         }
 
-      .moe-card::before {
+        .moe-card::before {
             content: '';
             position: absolute;
             top: -10px;
@@ -202,74 +120,70 @@
             transform: translateX(-50%);
             width: 90%;
             height: 20px;
+            background: rgba(255, 182, 193, 0.3);
             border-radius: 10px;
         }
 
         /* 进度条样式 */
-      .moe-progress {
+        .moe-progress {
             height: 20px;
+            background: #ffe5f0;
             border-radius: 10px;
             overflow: hidden;
             position: relative;
         }
 
-      .moe-progress-bar {
+        .moe-progress-bar {
             height: 100%;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
             border-radius: 10px;
             transition: 0.5s;
         }
 
         /* 游戏列表 */
-      .game-list {
+        .game-list {
             margin: 15px 0;
             padding-left: 30px;
         }
 
-      .game-list li {
+        .game-list li {
             list-style-type: '🎮';
             padding-left: 10px;
             margin: 8px 0;
         }
 
         /* 联系按钮 */
-      .contact-btn {
+        .contact-btn {
             display: inline-block;
             padding: 12px 25px;
+            background: rgba(255, 105, 180, 0.9);
+            color: white!important;
             border-radius: 25px;
             margin: 10px;
             transition: 0.3s;
             text-decoration: none;
         }
 
-      .contact-btn:hover {
+        .contact-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
         }
 
         /* 响应式优化 */
         @media (max-width: 768px) {
-            .nav-title {
-                font-size: 20px;
-            }
-
-          .lang-btn span {
-                display: none;
-            }
-
-          .lang-btn {
-                padding: 8px 15px!important;
-            }
+            .nav-title { font-size: 20px; }
+            .lang-btn span { display: none; }
+            .lang-btn { padding: 8px 15px!important; }
         }
     </style>
 </head>
-
-<body class="day - mode">
+<body>
     <div class="container">
         <nav class="nav">
-            <img src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg"
-                class="avatar"
-                style="width:50px;height:50px;"
-                alt="头像">
+            <img src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg" 
+                 class="avatar" 
+                 style="width:50px;height:50px;"
+                 alt="头像">
 
             <span class="nav-title">水稻的小站</span>
 
@@ -293,10 +207,10 @@
 
 
         <div class="avatar-section">
-            <img src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg"
-                class="avatar"
-                style="width:50px;height:50px;"
-                alt="头像">
+            <img src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg" 
+                 class="avatar" 
+                 style="width:50px;height:50px;"
+                 alt="头像">
             <h2 style="color:#ff69b4;margin-top:15px;">欢迎来到水稻的小站</h2>
             <div style="margin-top:25px;">
                 <a href="https://blog.oneshuidao.top" class="contact-btn">
@@ -389,31 +303,11 @@
 
         // 头像加载保护
         document.querySelectorAll('.avatar').forEach(avatar => {
-            avatar.onerror = function () {
+            avatar.onerror = function() {
                 this.style.background = '#ffe5f0';
                 this.innerHTML = '<i class="fas fa-user-slash" style="color:#ff69b4;font-size:2em;"></i>';
             }
         });
-
-        // 黑夜模式切换功能
-        function toggleNightMode() {
-            const body = document.querySelector('body');
-            if (body.classList.contains('day - mode')) {
-                body.classList.remove('day - mode');
-                body.classList.add('night - mode');
-            } else {
-                body.classList.remove('night - mode');
-                body.classList.add('day - mode');
-            }
-        }
-
-        // 添加黑夜模式切换按钮
-        const nightModeButton = document.createElement('mdui-button');
-        nightModeButton.setAttribute('variant', 'text');
-        nightModeButton.textContent = '切换黑夜模式';
-        nightModeButton.addEventListener('click', toggleNightMode);
-        document.body.appendChild(nightModeButton);
     </script>
 </body>
-
 </html>
