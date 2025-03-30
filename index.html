@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>水稻的二次元小屋</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/mdui@2.0.3/mdui.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
         * {
@@ -31,22 +32,58 @@
             padding: 20px;
         }
 
-        /* 萌系导航栏 */
+        /* 导航栏样式 */
         .nav {
             background: rgba(255, 240, 245, 0.95);
             border-radius: 20px;
-            padding: 15px;
+            padding: 12px 20px;
             margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
             display: flex;
             align-items: center;
+            gap: 15px;
         }
 
         .nav-title {
             color: #ff69b4;
             font-size: 24px;
             text-shadow: 2px 2px 0px white;
-            margin-left: 20px;
+            margin-left: 10px;
+        }
+
+        /* 语言切换优化样式 */
+        .lang-switcher {
+            margin-left: auto;
+            position: relative;
+        }
+
+        .lang-btn {
+            background: rgba(255,105,180,0.1)!important;
+            color: #ff69b4!important;
+            border-radius: 20px!important;
+            padding: 8px 20px!important;
+            transition: all 0.3s!important;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255,105,180,0.2)!important;
+            transform: translateY(-2px);
+        }
+
+        .lang-menu {
+            background: rgba(255,255,255,0.95)!important;
+            border-radius: 15px!important;
+            box-shadow: 0 4px 20px rgba(255,182,193,0.3)!important;
+        }
+
+        .lang-item {
+            color: #ff69b4!important;
+            padding: 12px 25px!important;
+            transition: 0.3s!important;
+        }
+
+        .lang-item:hover {
+            background: rgba(255,105,180,0.1)!important;
         }
 
         /* 头像区域 */
@@ -72,6 +109,7 @@
             margin: 20px 0;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             position: relative;
+            transition: transform 0.3s;
         }
 
         .moe-card::before {
@@ -130,24 +168,55 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
         }
+
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .nav-title { font-size: 20px; }
+            .lang-btn span { display: none; }
+            .lang-btn { padding: 8px 15px!important; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <nav class="nav">
-            <img src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg" class="avatar" style="width:50px;height:50px;">
+            <img src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg" 
+                 class="avatar" 
+                 style="width:50px;height:50px;"
+                 alt="头像">
+
             <span class="nav-title">水稻的次元小屋</span>
-            <div style="flex-grow:1"></div>
-            <a href="index.html" class="contact-btn">中文</a>
-            <a href="english.html" class="contact-btn">EN</a>
+
+            <div class="lang-switcher">
+                <mdui-dropdown>
+                    <mdui-button variant="text" class="lang-btn" slot="trigger">
+                        <i class="fas fa-globe-asia"></i>
+                        <span>语言/Lang</span>
+                    </mdui-button>
+                    <mdui-menu class="lang-menu">
+                        <mdui-menu-item class="lang-item" href="index.html">
+                            <i class="fas fa-comment-dots"></i> 简体中文
+                        </mdui-menu-item>
+                        <mdui-menu-item class="lang-item" href="english.html">
+                            <i class="fas fa-comment"></i> English
+                        </mdui-menu-item>
+                    </mdui-menu>
+                </mdui-dropdown>
+            </div>
         </nav>
 
+        <!-- 头像区域包含博客按钮 -->
         <div class="avatar-section">
             <img class="avatar" alt="头像">
             <h2 style="color:#ff69b4;margin-top:15px;">欢迎来到水稻的幻想世界 🌸</h2>
-            <a href="https://blog.oneshuidao.top" class="contact-btn"><i class="fas fa-book"></i> 个人博客</a>
+            <div style="margin-top:25px;">
+                <a href="https://blog.oneshuidao.top" class="contact-btn">
+                    <i class="fas fa-book"></i> 个人博客
+                </a>
+            </div>
         </div>
 
+        <!-- 以下其他内容保持不变 -->
         <div class="moe-card">
             <h3><i class="fas fa-gamepad"></i> 技能树</h3>
             <div class="game-list">
@@ -216,8 +285,9 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
     <script>
-        // 添加可爱的悬停效果
+        // 卡片悬停效果
         document.querySelectorAll('.moe-card').forEach(card => {
             card.addEventListener('mouseover', () => {
                 card.style.transform = 'translateY(-5px)';
@@ -225,6 +295,14 @@
             card.addEventListener('mouseout', () => {
                 card.style.transform = 'translateY(0)';
             });
+        });
+
+        // 头像加载保护
+        document.querySelectorAll('.avatar').forEach(avatar => {
+            avatar.onerror = function() {
+                this.style.background = '#ffe5f0';
+                this.innerHTML = '<i class="fas fa-user-slash" style="color:#ff69b4;font-size:2em;"></i>';
+            }
         });
     </script>
 </body>
