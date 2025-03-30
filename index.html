@@ -2,8 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>小樱的二次元小屋</title>
+    <title>水稻的二次元小屋</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
         * {
             margin: 0;
@@ -19,7 +20,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg') no-repeat center/cover;
+            background: url('https://upload-bbs.miyoushe.com/upload/2025/01/17/292762008/e7855deff47d6544e2860715cd5b2f75_671118890243865427.jpg') no-repeat center/cover;
             filter: blur(8px) brightness(0.9);
             z-index: -1;
         }
@@ -30,68 +31,50 @@
             padding: 20px;
         }
 
-        /* 导航栏 */
+        /* 萌系导航栏 */
         .nav {
-            background: rgba(255, 223, 240, 0.9);
+            background: rgba(255, 240, 245, 0.95);
             border-radius: 20px;
             padding: 15px;
             margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+            display: flex;
+            align-items: center;
         }
 
-        .nav a {
-            color: #ff7096;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            transition: 0.3s;
+        .nav-title {
+            color: #ff69b4;
+            font-size: 24px;
+            text-shadow: 2px 2px 0px white;
+            margin-left: 20px;
         }
 
-        .nav a:hover {
-            color: #ff1493;
-            text-shadow: 0 0 10px #ff69b4;
+        /* 头像区域 */
+        .avatar-section {
+            text-align: center;
+            margin: 40px 0;
         }
 
-        /* 主要内容区域 */
-        .main-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 头像样式 */
         .avatar {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             border: 5px solid white;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-            margin: -100px auto 20px;
-            position: relative;
-            background: url('你的头像地址') center/cover;
+            background: url('https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg') center/cover;
         }
 
-        /* 标题样式 */
-        h1 {
-            color: #ff69b4;
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 0px white;
-        }
-
-        /* 内容卡片 */
-        .card {
-            background: linear-gradient(145deg, #fff0f5, #ffe4e1);
-            border-radius: 20px;
-            padding: 25px;
+        /* 萌系卡片 */
+        .moe-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 30px;
             margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
-        .card::before {
+        .moe-card::before {
             content: '';
             position: absolute;
             top: -10px;
@@ -103,66 +86,146 @@
             border-radius: 10px;
         }
 
-        /* 按钮样式 */
-        .btn {
+        /* 进度条样式 */
+        .moe-progress {
+            height: 20px;
+            background: #ffe5f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .moe-progress-bar {
+            height: 100%;
             background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white!important;
-            padding: 12px 30px;
-            border-radius: 25px;
+            border-radius: 10px;
+            transition: 0.5s;
+        }
+
+        /* 游戏列表 */
+        .game-list {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .game-list li {
+            list-style-type: '🎮';
+            padding-left: 10px;
+            margin: 8px 0;
+        }
+
+        /* 联系按钮 */
+        .contact-btn {
             display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255, 105, 180, 0.9);
+            color: white!important;
+            border-radius: 25px;
             margin: 10px;
-            border: none;
-            cursor: pointer;
             transition: 0.3s;
+            text-decoration: none;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
+        .contact-btn:hover {
+            transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-        }
-
-        /* 图标装饰 */
-        .decor-star {
-            position: absolute;
-            color: #ff69b4;
-            animation: twinkle 1.5s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.8; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <nav class="nav">
-            <a href="#"><i class="fas fa-home"></i> 首页</a>
-            <a href="#"><i class="fas fa-heart"></i> 作品</a>
-            <a href="#"><i class="fas fa-envelope"></i> 联系</a>
+            <img src="https://user.klpbbs.com/data/avatar/000/01/43/51_avatar_middle.jpg" class="avatar" style="width:50px;height:50px;">
+            <span class="nav-title">水稻的次元小屋</span>
+            <div style="flex-grow:1"></div>
+            <a href="index.html" class="contact-btn">中文</a>
+            <a href="english.html" class="contact-btn">EN</a>
         </nav>
 
-        <div class="main-card">
-            <div class="avatar"></div>
-            <h1>欢迎来到小樱的次元小屋 ✨</h1>
+        <div class="avatar-section">
+            <img class="avatar" alt="头像">
+            <h2 style="color:#ff69b4;margin-top:15px;">欢迎来到水稻的幻想世界 🌸</h2>
+            <a href="https://blog.oneshuidao.top" class="contact-btn"><i class="fas fa-book"></i> 个人博客</a>
+        </div>
+
+        <div class="moe-card">
+            <h3><i class="fas fa-gamepad"></i> 技能树</h3>
+            <div class="game-list">
+                <div><i class="fas fa-check"></i> 玩游戏 <span class="moe-badge">HOT</span></div>
+                <div><i class="fas fa-check"></i> 写网站 <span class="moe-badge">HOT</span></div>
+                <div><i class="fas fa-check"></i> 管理论坛 <span class="moe-badge">HOT</span></div>
+                <div><i class="fas fa-check"></i> 水群</div>
+            </div>
+
+            <h3 style="margin-top:25px;"><i class="fas fa-chart-pie"></i> 能力雷达</h3>
+            <p>社交 10%</p>
+            <div class="moe-progress"><div class="moe-progress-bar" style="width:10%"></div></div>
+            <p>编程 30%</p>
+            <div class="moe-progress"><div class="moe-progress-bar" style="width:30%"></div></div>
+            <p>玩游戏 70%</p>
+            <div class="moe-progress"><div class="moe-progress-bar" style="width:70%"></div></div>
+            <p>摆烂 100% <i class="fas fa-smile-wink"></i></p>
+            <div class="moe-progress"><div class="moe-progress-bar" style="width:100%"></div></div>
+        </div>
+
+        <div class="moe-card">
+            <h3><i class="fas fa-headset"></i> 游戏收藏</h3>
+            <details class="game-list">
+                <summary>微软系列 🎯</summary>
+                <ul>
+                    <li>Minecraft</li>
+                    <li>地平线4</li>
+                </ul>
+            </details>
+            <details class="game-list">
+                <summary>Steam 宝库 🎮</summary>
+                <ul>
+                    <li>求生之路系列</li>
+                    <li>传送门系列</li>
+                    <li>战地1</li>
+                </ul>
+            </details>
+            <details class="game-list">
+                <summary>米哈游宇宙 🌌</summary>
+                <ul>
+                    <li>崩坏三</li>
+                    <li>原神</li>
+                    <li>崩坏：星穹铁道</li>
+                </ul>
+            </details>
+        </div>
+
+        <div class="moe-card">
+            <h3><i class="fas fa-envelope"></i> 联系方式</h3>
+            <a href="mailto:5********@******" class="contact-btn">邮箱①</a>
+            <a href="mailto:s******@**************" class="contact-btn">邮箱②</a>
+            <a href="mailto:o*********@*******" class="contact-btn">邮箱③</a>
             
-            <div class="card">
-                <h2><i class="fas fa-star"></i> 关于我</h2>
-                <p>❤️ 二次元文化爱好者</p>
-                <p>🎨 插画创作者</p>
-                <p>🌸 可爱事物收集家</p>
+            <div style="margin-top:20px;">
+                <a href="https://klpbbs.com/?14351" class="contact-btn"><i class="fas fa-users"></i> 苦力怕论坛</a>
+                <a href="https://github.com/shuidaobenzun" class="contact-btn"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://b23.tv/wa7aGWI" class="contact-btn"><i class="fab fa-bilibili"></i> Bilibili</a>
             </div>
+        </div>
 
-            <div class="card">
-                <h2><i class="fas fa-paint-brush"></i> 最新作品</h2>
-                <!-- 这里可以添加作品内容 -->
-            </div>
-
-            <div style="text-align: center">
-                <button class="btn"><i class="fas fa-comment"></i> 留言板</button>
-                <button class="btn"><i class="fas fa-share-alt"></i> 社交链接</button>
+        <div class="moe-card" style="text-align:center;color:#ff69b4;">
+            <i class="fas fa-copyright"></i> 2024 水稻本尊 · 幻想次元部屋
+            <div style="margin-top:10px;">
+                <i class="fas fa-star"></i> 特别感谢：MDUI框架 · 米游社背景图
             </div>
         </div>
     </div>
+
+    <script>
+        // 添加可爱的悬停效果
+        document.querySelectorAll('.moe-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
