@@ -7,63 +7,6 @@
     <link href="https://unpkg.com/mdui@2.0.3/mdui.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
-/* CSS优化部分 */
-/* 中国铁路主题优化 */
-.moe-card .fa-train {
-    color: #CF2A2A; /* CR标准红色 */
-    text-shadow: 1px 1px 2px rgba(207,42,42,0.2);
-}
-
-.railway-info {
-    background: rgba(255, 242, 242, 0.95); /* 更柔和的红色背景 */
-    border: 2px solid #FFD70033; /* 添加金色边框 */
-}
-
-.red-gradient {
-    background: linear-gradient(45deg, #CF2A2A, #FF4500); /* 调整红色渐变 */
-    -webkit-background-clip: text;
-    background-clip: text;
-}
-
-.speed-line {
-    height: 4px;
-    background: repeating-linear-gradient(
-        90deg,
-        #CF2A2A 0 10px,
-        #FFD700 10px 20px
-    );
-    animation: speed 1s linear infinite;
-}
-
-/* 添加中国铁路元素装饰 */
-.moe-card::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    height: 4px;
-    background: linear-gradient(90deg, #CF2A2A 50%, #FFD700 50%);
-    border-radius: 2px;
-}
-
-/* 微调原有动画 */
-@keyframes speed {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-/* 图标动态效果 */
-.railway-info i {
-    color: #CF2A2A;
-    animation: iconBounce 1.5s ease-in-out infinite;
-}
-
-@keyframes iconBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
-}
 /* 高铁主题样式 */
 .railway-info {
     margin: 20px 0;
@@ -336,9 +279,8 @@
             <p>摆烂 100% <i class="fas fa-smile-wink"></i></p>
             <div class="moe-progress"><div class="moe-progress-bar" style="width:100%"></div></div>
         </div>
-<!-- HTML部分保持不变，仅使用原有结构 -->
 <div class="moe-card">
-    <h3><i class="fas fa-train"></i> 火车迷</h3>
+    <h3><i class="fas fa-train" style="color:#ff3366;"></i> 火车迷</h3>
     <div class="railway-info">
         <div class="train-number">
             <i class="fas fa-subway"></i>
@@ -351,11 +293,6 @@
             <span class="red-gradient">CR400AF-S-2372</span>
         </div>
     </div>
-    <div class="speed-line"></div>
-</div>
-    
-    <div class="cr-speed-line"></div>
-</div>
     <div class="speed-line"></div>
 </div>
         <div class="moe-card">
