@@ -7,6 +7,35 @@
     <link href="https://unpkg.com/mdui@2.0.3/mdui.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
+/* 火车轨道及动态效果 */
+.rail - track - line {
+    height: 5px;
+    background: #004B03;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.moving - train - effect {
+    width: 25px;
+    height: 5px;
+    background: #FF0000;
+    border-radius: 2.5px;
+    position: absolute;
+    top: 0;
+    left: -25px;
+    animation: movingTrain 5s linear infinite;
+}
+
+@keyframes movingTrain {
+    0% {
+        left: -25px;
+    }
+    100% {
+        left: 100%;
+    }
+}
 /* 高铁主题样式 */
 .railway-info {
     margin: 20px 0;
@@ -280,19 +309,25 @@
             <div class="moe-progress"><div class="moe-progress-bar" style="width:100%"></div></div>
         </div>
 <div class="moe-card">
-    <h3><i class="fas fa-train" style="color:#ff3366;"></i> 火车迷</h3>
-    <div class="railway-info">
-        <div class="train-number">
-            <i class="fas fa-subway"></i>
+    <h3><i class="fas fa-train" style="color:#FF0000;"></i> 火车迷</h3>
+    <div class="railway - info">
+        <div class="train - number">
+            <i class="fas fa - train - fa - symbol" style="color:#004B03;"></i>
             <span>本命车次：</span>
-            <span class="red-gradient">D6097</span>
+            <span class="red - gradient">D6097</span>
         </div>
-        <div class="train-model">
-            <i class="fas fa-train"></i>
+        <div class="train - model">
+            <i class="fas fa - train - car - side" style="color:#004B03;"></i>
             <span>本命车型：</span>
-            <span class="red-gradient">CR400AF-S-2372</span>
+            <span class="red - gradient">CR400AF - S - 2372</span>
         </div>
     </div>
+    <!-- 新增动态火车轨道线动画效果 -->
+    <div class="rail - track - line">
+        <div class="moving - train - effect"></div>
+    </div>
+</div>
+
     <div class="speed-line"></div>
 </div>
         <div class="moe-card">
