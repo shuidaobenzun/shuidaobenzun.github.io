@@ -7,6 +7,46 @@
     <link href="https://unpkg.com/mdui@2.0.3/mdui.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
+/* 高铁主题样式 */
+.railway-info {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255,240,240,0.9);
+    border-radius: 15px;
+    position: relative;
+}
+
+.railway-info div {
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.red-gradient {
+    background: linear-gradient(45deg, #ff3366, #ff1493);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.speed-line {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff3366 50%, transparent);
+    margin: 20px 0;
+    animation: speed 1.5s infinite;
+}
+
+@keyframes speed {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.railway-info i {
+    color: #ff3366;
+    margin-right: 10px;
+    width: 25px;
+    text-align: center;
+}
         * {
             margin: 0;
             padding: 0;
