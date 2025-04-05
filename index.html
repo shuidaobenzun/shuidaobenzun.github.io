@@ -7,6 +7,81 @@
     <link href="https://unpkg.com/mdui@2.0.3/mdui.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
+/* 新增CSS样式 */
+.train-details {
+    margin: 15px 0;
+    border: 2px solid rgba(255,51,102,0.2);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.train-details[open] {
+    background: rgba(255,240,240,0.95);
+    box-shadow: 0 2px 8px rgba(255,51,102,0.1);
+}
+
+.train-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+}
+
+.train-title {
+    margin: 0 8px;
+    color: #ff3366;
+    font-weight: bold;
+}
+
+.arrow {
+    margin-left: auto;
+    transition: transform 0.3s;
+    color: #ff3366;
+}
+
+.train-details[open] .arrow {
+    transform: rotate(180deg);
+}
+
+.api-response {
+    padding: 15px;
+    background: rgba(255,255,255,0.9);
+    margin: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #ff3366;
+}
+
+.loading {
+    color: #ff3366;
+    text-align: center;
+    padding: 10px;
+}
+
+.train-info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.train-info-table td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255,51,102,0.1);
+}
+
+.train-info-table tr:last-child td {
+    border-bottom: none;
+}
+
+.update-time {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.error-msg {
+    color: #ff0000;
+    text-align: center;
+    padding: 10px;
+}
 /* 高铁主题样式 */
 .railway-info {
     margin: 20px 0;
@@ -279,20 +354,44 @@
             <p>摆烂 100% <i class="fas fa-smile-wink"></i></p>
             <div class="moe-progress"><div class="moe-progress-bar" style="width:100%"></div></div>
         </div>
+<!-- 在原有火车迷卡片位置替换为以下HTML -->
 <div class="moe-card">
-    <h3><i class="fas fa-train" style="color:#ff3366;"></i> 火车迷</h3>
+    <h3><i class="fas fa-train" style="color:#ff3366;"></i> 铁道迷时间</h3>
     <div class="railway-info">
-        <div class="train-number">
-            <i class="fas fa-subway"></i>
-            <span>本命车次：</span>
-            <span class="red-gradient">D6097</span>
-        </div>
-        <div class="train-model">
-            <i class="fas fa-train"></i>
-            <span>本命车型：</span>
-            <span class="red-gradient">CR400AF-S-2372</span>
-        </div>
+        <!-- 车次信息 -->
+        <details class="train-details">
+            <summary>
+                <div class="train-header">
+                    <i class="fas fa-subway"></i>
+                    <span class="train-title">本命车次：D6097</span>
+                    <i class="arrow fas fa-chevron-down"></i>
+                </div>
+            </summary>
+            <div class="api-response" data-api="train/D6097">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> 正在获取车型信息...
+                </div>
+            </div>
+        </details>
+
+        <!-- 车型信息 -->
+        <details class="train-details">
+            <summary>
+                <div class="train-header">
+                    <i class="fas fa-train"></i>
+                    <span class="train-title">本命车型：CR400AF-S-2372</span>
+                    <i class="arrow fas fa-chevron-down"></i>
+                </div>
+            </summary>
+            <div class="api-response" data-api="emu/CR400AF-S-2372">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> 正在获取车次信息...
+                </div>
+            </div>
+        </details>
     </div>
+    <div class="speed-line"></div>
+</div>
     <div class="speed-line"></div>
 </div>
         <div class="moe-card">
@@ -346,6 +445,62 @@
 
     <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
     <script>
+// 新增JavaScript代码
+document.querySelectorAll('.train-details').forEach(detail => {
+    detail.addEventListener('toggle', async function() {
+        if (this.open && !this.dataset.loaded) {
+            const apiContainer = this.querySelector('.api-response');
+            const endpoint = apiContainer.dataset.api;
+            const apiUrl = `https://api.rail.re/${endpoint}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('数据获取失败');
+                const data = await response.json();
+                
+                // 处理API返回的数组数据
+                let htmlContent = '';
+                if (data.length > 0) {
+                    // 按日期降序排序
+                    const sortedData = data.sort((a, b) => 
+                        new Date(b.date) - new Date(a.date));
+                    
+                    // 构建表格
+                    htmlContent = `
+                        <table class="train-info-table">
+                            <tr>
+                                <th>日期</th>
+                                <th>${endpoint.startsWith('train') ? '车型' : '车次'}</th>
+                            </tr>
+                            ${sortedData.map(item => `
+                                <tr>
+                                    <td>${item.date}</td>
+                                    <td>${endpoint.startsWith('train') ? 
+                                        item.emu_no : item.train_no}</td>
+                                </tr>
+                            `).join('')}
+                        </table>
+                        <div class="update-time">
+                            数据更新于：${new Date().toLocaleString()}
+                        </div>
+                    `;
+                } else {
+                    htmlContent = `<div class="error-msg">暂无历史数据</div>`;
+                }
+                
+                apiContainer.innerHTML = htmlContent;
+                this.dataset.loaded = true;
+            } catch (error) {
+                apiContainer.innerHTML = `
+                    <div class="error-msg">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        数据加载失败：${error.message}
+                    </div>
+                `;
+            }
+        }
+    });
+});
         // 卡片悬停效果
         document.querySelectorAll('.moe-card').forEach(card => {
             card.addEventListener('mouseover', () => {
